@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+    <style>
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            show_todo();
+            show_running();
+            show_done();
+        });
+
+        // 데이터 베이스값 출력 동작 함수------------------------------------------ 
+
+        //할일 리스트 보여줌
+        function show_todo() {
+            fetch('/todo').then(res => res.json()).then(data => {
+                let rows = data['result']
+                //console.log(rows)
+
+                rows.forEach((item) => {
+                    let todo = item['todo']
+                    let tmp = `
+                            <div class="box">
+                                <li>
+                                    ${todo}
+                                </li>
+                                <button>up</button>
+                                <button>down</button>
+                            </div>
+                            `
+
+                    $('.todo').append(tmp);
+                })
+
+            })
+        }
+
+        //진행중 리스트 보여줌
+        function show_running() {
+            fetch('/running').then(res => res.json()).then(data => {
+                let rows = data['result']
+                //console.log(rows)
+
+                rows.forEach((item) => {
+                    let todo = item['todo']
+                    let tmp = `
+                            <div class="box">
+                                <li>
+                                    ${todo}
+                                </li>
+                                <button>up</button>
+                                <button>down</button>
+                            </div>
+                            `
+
+                    $('.running').append(tmp);
+                })
+            })
+        }
+
+        //완료 값을 보여줌
+        function show_done() {
+            fetch('/done').then(res => res.json()).then(data => {
+                let rows = data['result']
+
+                rows.forEach((item) => {
+                    let todo = item['todo']
+                    let tmp = `
+                            <div class="box">
+                                <li>
+                                    ${todo}
+                                </li>
+                                <button value="${todo}" onclick="move_front(this)" type="button">up</button>
+                                <button>down</button>
+                            </div>
+                            `
+
+                    $('.done').append(tmp);
+                })
+            })
+        }
+
+        // 버튼 클릭시 동작 함수------------------------------------------ 
+
+        //맨위 input 버튼클릭 시
+        function input_todo() {
+            let todo = $('#value').val()
+            console.log(todo)
+            let formData = new FormData();
+            formData.append("todo_give", todo);
+
+            fetch('/add', { method: "POST", body: formData, })
+                .then((response) => response.json()).then((data) => {
+                    alert(data["msg"]);
+                    window.location.reload();
+                });
+        }
+
+
+        //진행상황이 뒤로가는 버튼 클릭 시
+        function move_back() {
+
+            fetch('/move_cancel', { method: "POST", body: formData, })
+                .then((response) => response.json()).then((data) => {
+                    alert(data["msg"]);
+                    window.location.reload();
+                });
+        }
+
+
+        //진행상황이 앞으로가는 버튼 클릭 시 
+        function move_front(t) {
+            let data=t.value
+            let formData = new FormData();
+            formData.append("move_data", data)
+
+            fetch('/move', { method: "POST", body: formData, })
+                .then((response) => response.json()).then((data) => {
+                    alert(data["msg"]);
+                    window.location.reload();
+                });
+        }
+
+    </script>
+
+    <title>team Schedule</title>
+
+    <header class="title">team </header>
+
+</head>
+
+<body>
+    <div class="input">
+        <li class="input_li">
+            <input id="value" type="text" placeholder="입력하세요" />
+            <button onclick="input_todo()" type="button"> 입력</button>
+        </li>
+    </div>
+
+    <section class="content">
+
+        <section class="todo">
+            <h2> Todo! </h2>
+            <div class="box">
+                <!-- <li>
+                    1번 박스
+                </li>
+                <button>up</button>
+                <button>down</button>
+            </div>
+            <div class="box">
+                <li>
+                    2번 박스
+                </li>
+                <button>up</button>
+                <button>down</button>
+            </div>
+            <div class="box">
+                <li>
+                    3번 박스
+                </li>
+                <button>up</button>
+                <button>down</button> -->
+            </div>
+
+        </section>
+
+        <section class="running">
+            <h2> 진행 중! </h2>
+            <!-- <div class="box">
+                <li>
+                    1번 박스
+                </li>
+                <button>up</button>
+                <button>down</button>
+            </div>
+            <div class="box">
+                <li>
+                    2번 박스
+                </li>
+                <button>up</button>
+                <button>down</button>
+            </div>
+            <div class="box">
+                <li>
+                    3번 박스
+                </li>
+                <button>up</button>
+                <button>down</button>
+            </div> -->
+        </section>
+
+        <section class="done">
+            <h2> 완료! </h2>
+            <!-- <div class="box">
+                <li>
+                    1번 박스
+                </li>
+                <button>up</button>
+                <button>down</button>
+            </div>
+            <div class="box">
+                <li>
+                    2번 박스
+                </li>
+                <button>up</button>
+                <button>down</button>
+            </div>
+            <div class="box">
+                <li>
+                    3번 박스
+                </li>
+                <button>up</button>
+                <button>down</button>
+            </div> -->
+        </section>
+
+
+
+
+    </section>
+
+
+</body>
+
+</html>
