@@ -1,21 +1,25 @@
 body{
     background-color: #dcd9d9;
 }
+header{
+    margin: 0;
+    background-color: #A09595;
+}
 
 .title{
-    width: 100%;
+    width: 90%;
     height: 20vh;
     font-size: 5vh;
 
     display : flex;
-    justify-content : center;
+    justify-content: space-between;
     align-items : center;
-    background-color: #A09595;
-    
+
+    list-style: none;
 }
 
 .input{
-    margin-top: 10%;
+    margin-top: 5%;
     width: 100%;
     text-align : center;
     
@@ -23,6 +27,11 @@ body{
 
 .input>li{
     list-style: none;
+    
+}
+
+.input_box{
+    font-size: 5vh;
     
 }
 
@@ -47,11 +56,14 @@ body{
 
 .box{
     display: flex;
+    
     width: 90%;
     margin: 5% 5% 5% 5%;
     justify-content: space-between;
     background-color: white;
     align-items: center;
+    list-style: none;
+
     
 }
 

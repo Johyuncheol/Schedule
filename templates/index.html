@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 
@@ -35,8 +37,10 @@
                                 <li>
                                     ${todo}
                                 </li>
-                                <button>up</button>
-                                <button>down</button>
+                                <li>
+                                <button value="${todo}" onclick="move_front(this)" type="button">up</button>
+                                <button value="${todo}" onclick="move_back(this)" type="button">down</button>
+                                </li>
                             </div>
                             `
 
@@ -59,8 +63,10 @@
                                 <li>
                                     ${todo}
                                 </li>
-                                <button>up</button>
-                                <button>down</button>
+                                <li>
+                                <button value="${todo}" onclick="move_front(this)" type="button">up</button>
+                                <button value="${todo}" onclick="move_back(this)" type="button">down</button>
+                                </li>
                             </div>
                             `
 
@@ -81,8 +87,10 @@
                                 <li>
                                     ${todo}
                                 </li>
+                                <li>
                                 <button value="${todo}" onclick="move_front(this)" type="button">up</button>
-                                <button>down</button>
+                                <button value="${todo}" onclick="move_back(this)" type="button">down</button>
+                                </li>
                             </div>
                             `
 
@@ -109,7 +117,11 @@
 
 
         //진행상황이 뒤로가는 버튼 클릭 시
-        function move_back() {
+        function move_back(t) {
+            let data = t.value
+            console.log(data)
+            let formData = new FormData();
+            formData.append("move_cancel", data)
 
             fetch('/move_cancel', { method: "POST", body: formData, })
                 .then((response) => response.json()).then((data) => {
@@ -121,7 +133,7 @@
 
         //진행상황이 앞으로가는 버튼 클릭 시 
         function move_front(t) {
-            let data=t.value
+            let data = t.value
             let formData = new FormData();
             formData.append("move_data", data)
 
@@ -132,19 +144,35 @@
                 });
         }
 
+        function logout() {
+            $.removeCookie('mytoken');
+            alert('로그아웃!')
+            window.location.href = '/'
+        }
+
+
     </script>
 
-    <title>team Schedule</title>
+    <title>Team Schedule</title>
 
-    <header class="title">team </header>
+    <header>
+        <ul class="title">
+            <li>
+                <h1>Team Schedule</h1>
+            </li>
+            <li>
+                <p onclick="logout()">Logout</p>
+            </li>
+        </ul>
+    </header>
 
 </head>
 
 <body>
     <div class="input">
         <li class="input_li">
-            <input id="value" type="text" placeholder="입력하세요" />
-            <button onclick="input_todo()" type="button"> 입력</button>
+            <input class="input_box" id="value" type="text" placeholder="입력하세요" />
+            <button class="input_box" onclick="input_todo()" type="button"> 입력</button>
         </li>
     </div>
 
@@ -152,8 +180,8 @@
 
         <section class="todo">
             <h2> Todo! </h2>
-            <div class="box">
-                <!-- <li>
+            <!--  <div class="box">
+               <li>
                     1번 박스
                 </li>
                 <button>up</button>
