@@ -11,11 +11,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-
+    <!-- 폰트 -->
     <style>
-
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
     </style>
-    <script>
+    <!-- 버튼 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<script>
         $(document).ready(function () {
             show_todo();
             show_running();
@@ -23,7 +27,6 @@
         });
 
         // 데이터 베이스값 출력 동작 함수------------------------------------------ 
-
         //할일 리스트 보여줌
         function show_todo() {
             fetch('/todo').then(res => res.json()).then(data => {
@@ -35,11 +38,13 @@
                     let tmp = `
                             <div class="box">
                                 <li>
+                                    <button class="material-symbols-outlined" value="${todo}" onclick="move_back(this)">arrow_back_ios</button>    
+                                </li>
+                                <li class = "detail">
                                     ${todo}
                                 </li>
                                 <li>
-                                <button value="${todo}" onclick="move_front(this)" type="button">up</button>
-                                <button value="${todo}" onclick="move_back(this)" type="button">down</button>
+                                    <button class="material-symbols-outlined" value="${todo}" onclick="move_front(this)">arrow_forward_ios</button>
                                 </li>
                             </div>
                             `
@@ -61,11 +66,13 @@
                     let tmp = `
                             <div class="box">
                                 <li>
+                                    <button class="material-symbols-outlined" value="${todo}" onclick="move_back(this)">arrow_back_ios</button>    
+                                </li>
+                                <li class = "detail">
                                     ${todo}
                                 </li>
                                 <li>
-                                <button value="${todo}" onclick="move_front(this)" type="button">up</button>
-                                <button value="${todo}" onclick="move_back(this)" type="button">down</button>
+                                    <button class="material-symbols-outlined" value="${todo}" onclick="move_front(this)">arrow_forward_ios</button>
                                 </li>
                             </div>
                             `
@@ -85,11 +92,13 @@
                     let tmp = `
                             <div class="box">
                                 <li>
+                                    <button class="material-symbols-outlined" value="${todo}" onclick="move_back(this)">arrow_back_ios</button>    
+                                </li>
+                                <li class = "detail">
                                     ${todo}
                                 </li>
                                 <li>
-                                <button value="${todo}" onclick="move_front(this)" type="button">up</button>
-                                <button value="${todo}" onclick="move_back(this)" type="button">down</button>
+                                    <button class="material-symbols-outlined" value="${todo}" onclick="move_front(this)">arrow_forward_ios</button>
                                 </li>
                             </div>
                             `
@@ -154,14 +163,31 @@
     </script>
 
     <title>Team Schedule</title>
+    
 
     <header>
         <ul class="title">
-            <li>
-                <h1>Team Schedule</h1>
+            <li class="header_title">
+                <h2 class="ti_detail">Team <br/> <span class="na2">Schedule</span> </h2>
+                <div class="mas">&#128123; </div>
             </li>
-            <li>
-                <p onclick="logout()">Logout</p>
+
+            <li class="header_input">
+                 <div class="input_name">add : </div>
+                <input class="input_box" id="value" type="text" placeholder="please enter"/>
+<!--                 <span onclick="input_todo()" class="material-symbols-outlined">
+                    add
+                </span> -->
+               
+                
+                <span onclick="input_todo()" class="material-symbols-outlined">
+                    add_box
+                    </span>
+ 
+            </li>
+
+            <li class="input_bt">
+                <p class="btn_logout" onclick="logout()">Logout</p>
             </li>
         </ul>
     </header>
@@ -170,16 +196,12 @@
 
 <body>
     <div class="input">
-        <li class="input_li">
-            <input class="input_box" id="value" type="text" placeholder="입력하세요" />
-            <button class="input_box" onclick="input_todo()" type="button"> 입력</button>
-        </li>
+
     </div>
 
     <section class="content">
-
         <section class="todo">
-            <h2> Todo! </h2>
+            <h2> Todo </h2>
             <!--  <div class="box">
                <li>
                     1번 박스
@@ -205,7 +227,7 @@
         </section>
 
         <section class="running">
-            <h2> 진행 중! </h2>
+            <h2> Doing </h2>
             <!-- <div class="box">
                 <li>
                     1번 박스
@@ -230,7 +252,7 @@
         </section>
 
         <section class="done">
-            <h2> 완료! </h2>
+            <h2> Done </h2>
             <!-- <div class="box">
                 <li>
                     1번 박스

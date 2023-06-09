@@ -1,4 +1,21 @@
+html{
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/pool_table.png");
+    
+}
+
+.gate_box>h1{
+    font-size: 8vw;
+}
+
+.gate_box>button{
+    font-size: 2vw;
+}
+
 .gate_box{
-    margin-top: 40vh;
+    color: aliceblue;
+    margin-top: 35vh;
     text-align: center;
+   font-family: 'Jua', sans-serif;
+   background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/pool_table.png");
+
 }

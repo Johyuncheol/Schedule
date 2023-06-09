@@ -1,0 +1,29 @@
+.section{
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/pool_table.png");
+    font-family: 'Jua', sans-serif;
+}
+html{
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/pool_table.png");
+}
+
+.button{
+    background-color: #184029;
+}
+
+.title{
+    color: aliceblue;
+}
+
+.label{
+    color: aliceblue;
+}
+
+.has-text-centered{
+    margin-top: 10%;
+}
+
+.control{
+    width: 35vw;
+}
+
+
