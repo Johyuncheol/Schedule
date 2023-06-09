@@ -18,7 +18,7 @@ header{
 .title{
     width: 90vw;
     height: 20vh;
-    font-size: 5vw;
+    font-size: 2.5vw;
 
     display : flex;
     justify-content: space-between;
@@ -40,7 +40,7 @@ header{
 }
 
 .mas{
-    font-size: 10vw;
+    font-size: 7.3vw;
 }
 
 
