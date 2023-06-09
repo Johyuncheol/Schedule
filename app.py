@@ -6,7 +6,7 @@ import certifi
 
 ca=certifi.where()#mozilla가 제공하는 인증서
 
-client = MongoClient('mongodb+srv://sparta:test@cluster0.ohmkrzr.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('')
 db = client.dbsparta
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
