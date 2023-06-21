@@ -19,7 +19,10 @@
 
 <br/> <br/> 
 ### ●와이어 프레임
-
+![스크린샷(46)](https://github.com/Johyuncheol/Schedule/assets/51200912/6feac91d-ded7-429f-ab3c-49ef7c6f573e)
+![스크린샷(47)](https://github.com/Johyuncheol/Schedule/assets/51200912/7bc9a069-89de-42eb-9381-b57bb832c730)
+![스크린샷(48)](https://github.com/Johyuncheol/Schedule/assets/51200912/7dc1fde4-a692-443c-8518-1f428324339c)
+![스크린샷(49)](https://github.com/Johyuncheol/Schedule/assets/51200912/0f0d629d-4d34-487e-a98f-46bb15bedc06)
 
 
 <br/> <br/> 
