@@ -26,7 +26,7 @@
 ### ●API
 <br/> 
 <ul>
-<li> 기능	                   method	          URL	                  request	                                           response</li>
+<li><p> 기능	                   method	          URL	                  request	                                           response</p></li>
 <li>할 일 추가	              POST	          /add	        input태그의 id값을 통해 value 전송	              'todo': todo_receive, 'location': 0</li>
 <li>할 일 (앞으로 진행)	     POST	           /move	       클릭된 버튼의 밸류값	받은데이터[location]+1      저장 상황에 맞는 메시지</li>
 <li>할 일 (뒤로 진행)	        POST	          /move_cancel	클릭된 버튼의 밸류값	받은데이터[location]-1저장   상황에 맞는 메시지</li>
