@@ -26,7 +26,6 @@
 ### ●API
 <br/> 
 <ul>
-<li><p> 기능	                   method	          URL	                  request	                                           response</p></li>
 <li>할 일 추가	              POST	          /add	        input태그의 id값을 통해 value 전송	              'todo': todo_receive, 'location': 0</li>
 <li>할 일 (앞으로 진행)	     POST	           /move	       클릭된 버튼의 밸류값	받은데이터[location]+1      저장 상황에 맞는 메시지</li>
 <li>할 일 (뒤로 진행)	        POST	          /move_cancel	클릭된 버튼의 밸류값	받은데이터[location]-1저장   상황에 맞는 메시지</li>
@@ -34,5 +33,14 @@
 <li>리스트 출력 (진행중)	    GET	            /running	    /running	                                       'location':1  데이터의 리스트</li>
 <li>리스트 출력 (완료)	       GET	           /done	       /done	                                          'location':2  데이터의 리스트</li>
 </ul>
+
+|기능|method|URL|request|response|
+|---|---|---|---|---|
+|할 일 추가|POST	|/add|'todo': todo_receive, 'location': 0|
+|할 일 (앞으로 진행)|POST	|/move|저장 상황에 맞는 메시지|
+|할 일 (뒤로 진행)|POST	|/move_cancel|상황에 맞는 메시지|
+|리스트 출력 (할 일|GET|/todo|'location':0  데이터의 리스트|
+|리스트 출력 (진행중)|GET|/running|'location':1  데이터의 리스트|
+|리스트 출력 (완료)|GET|/done| 'location':2  데이터의 리스트|
 
  
